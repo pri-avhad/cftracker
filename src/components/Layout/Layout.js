@@ -68,7 +68,7 @@ class Layout extends React.Component {
           <div className = {s.visible}><Header /></div>
           <div className = {s.box}>
             <main className={s.content}>
-              <BreadcrumbHistory url={this.props.location.pathname} />
+              {/* <BreadcrumbHistory url={this.props.location.pathname} /> */}
               <TransitionGroup>
                 <CSSTransition
                   key={this.props.location.key}

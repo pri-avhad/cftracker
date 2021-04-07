@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Progress, Table, Label, Input } from "reactstrap";
+import BreadcrumbHistory from '../../components/BreadcrumbHistory/BreadcrumbHistory';
 
 import Widget from "../../components/Widget";
 
@@ -56,6 +57,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className={s.root}>
+      <BreadcrumbHistory url={this.props.location.pathname} />
         <h1 className="page-title">
           Dashboard &nbsp;
           <small>
