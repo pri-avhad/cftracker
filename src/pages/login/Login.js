@@ -48,7 +48,7 @@ class Login extends React.Component {
     }
 
     render() {
-        const { from } = this.props.location.state || { from: { pathname: '/app' } }; // eslint-disable-line
+        const { from } = this.props.location.state || { from: { pathname: '/carbonfootprint/homepage' } }; // eslint-disable-line
 
         // cant access login page while logged in
         if (Login.isAuthenticated(JSON.parse(localStorage.getItem('authenticated')))) {
@@ -60,7 +60,7 @@ class Login extends React.Component {
         return (
             <div className="auth-page">
                 <Container>
-                    <Widget className="widget-auth mx-auto" title={<h3 className="mt-0">Login to your Web App</h3>}>
+                    <Widget className="widget-auth mx-auto" title={<h3 className="mt-0">Login</h3>}>
                         <p className="widget-auth-info">
                             Use your email to sign in.
                         </p>

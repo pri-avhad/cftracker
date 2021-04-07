@@ -89,8 +89,8 @@ class Sidebar extends React.Component {
                         header="HomePage"
                         isHeader
                         iconName={<HomeIcon className={s.menuIcon} />}
-                        link="/app/main"
-                        index="main"
+                        link="/carbonfootprint/homepage"
+                        index="homepage"
                     />
                     {/* <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}

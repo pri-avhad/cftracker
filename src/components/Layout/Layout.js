@@ -76,14 +76,14 @@ class Layout extends React.Component {
                   timeout={200}
                 >
                   <Switch>
-                    <Route path="/app/main" exact render={() => <Redirect to="/app/main/dashboard" />} />
-                    <Route path="/app/main/dashboard" exact component={Dashboard} />
-                    <Route path="/app/components/icons" exact component={UIIcons} />
-                    <Route path="/app/notifications" exact component={UINotifications} />
-                    <Route path="/app/components/charts" exact component={Charts} />
-                    <Route path="/app/tables" exact component={TablesStatic} />
-                    <Route path="/app/components/maps" exact component={MapsGoogle} />
-                    <Route path="/app/typography" exact component={CoreTypography} />
+                    <Route path="/carbonfootprint" exact render={() => <Redirect to="/carbonfootprint/homepage" />} />
+                    <Route path="/carbonfootprint/homepage" exact component={Dashboard} />
+                    <Route path="/carbonfootprint/components/icons" exact component={UIIcons} />
+                    <Route path="/carbonfootprint/notifications" exact component={UINotifications} />
+                    <Route path="/carbonfootprint/components/charts" exact component={Charts} />
+                    <Route path="/carbonfootprint/tables" exact component={TablesStatic} />
+                    <Route path="/carbonfootprint/components/maps" exact component={MapsGoogle} />
+                    <Route path="/carbonfootprint/typography" exact component={CoreTypography} />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
