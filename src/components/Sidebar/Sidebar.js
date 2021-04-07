@@ -92,7 +92,7 @@ class Sidebar extends React.Component {
                         link="/app/main"
                         index="main"
                     />
-                    <LinksGroup
+                    {/* <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
                         activeItem={this.props.activeItem}
                         header="Typography"
@@ -100,17 +100,17 @@ class Sidebar extends React.Component {
                         iconName={<TypographyIcon className={s.menuIcon} />}
                         link="/app/typography"
                         index="core"
-                    />
-                    <LinksGroup
+                    /> */}
+                    {/* <LinksGroup
                         onActiveSidebarItemChange={t => this.props.dispatch(changeActiveSidebarItem(t))}
                         activeItem={this.props.activeItem}
-                        header="Tables Basic"
+                        header="Calculator"
                         isHeader
                         iconName={<TablesIcon className={s.menuIcon} />}
-                        link="/app/tables"
-                        index="tables"
-                    />
-                    <LinksGroup
+                        link="/carbonfootprint/calculator"
+                        index="calculator"
+                    /> */}
+                    {/* <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
                         activeItem={this.props.activeItem}
                         header="Notifications"
@@ -138,7 +138,7 @@ class Sidebar extends React.Component {
                                 header: 'Maps', link: '/app/components/maps',
                             },
                         ]}
-                    />
+                    /> */}
                     <Button  className={s.logbtn} onClick = {this.doLogout}>
                      <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}

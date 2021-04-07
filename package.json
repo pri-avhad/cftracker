@@ -85,6 +85,7 @@
     "react-dom": "^16.13.1",
     "react-google-maps": "^9.4.5",
     "react-redux": "^5.0.7",
+    "react-responsive-carousel": "^3.2.18",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-router-hash-link": "^1.2.2",

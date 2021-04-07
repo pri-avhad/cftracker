@@ -1,15 +1,12 @@
 const chartColors = {
-  blue: "#2477ff",
-  green: "#2d8515",
-  orange: "#e49400",
-  red: "#bb2a34",
-  purple: "#474d84",
+  blue: "#00b28c",
+  green: "#121738",
+  orange: "#fc742e",
+  red: "#E3F6F0",
+  purple: "#000000",
   dark: "#040620",
   teal: "#4179cf",
-  pink: "#e671b8",
-  gray: "#d6dee5",
-  default: "#595d78",
-  textColor: "#e0e0e1",
+  textColor: "#000000",
   gridLineColor: "#040620",
 };
 

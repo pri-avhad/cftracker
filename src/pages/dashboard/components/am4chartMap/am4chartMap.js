@@ -77,17 +77,17 @@ import s from './am4chartMap.module.scss';
     return (
       <div className={s.mapChart}>
         <div className={s.stats}>
-          <h6 className="mt-1">GEO-LOCATIONS</h6>
+          <h6 className="mt-1">Average monthly footprint</h6>
           <p className="h3 m-0">
             <span className="mr-xs fw-normal">
               <AnimateNumber
-                value={1656843}
+                value={46.667}
                 initialValue={0}
                 duration={1000} 
                 stepPrecision={0}
                 formatValue={n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
               /></span>
-            <i className="fa fa-map-marker" />
+            kg <i className="fa fa-fire" />
           </p>
         </div>
         <div className={s.map} id="map">

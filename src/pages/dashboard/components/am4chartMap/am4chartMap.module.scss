@@ -1,25 +1,27 @@
 @import '../../../../styles/app';
 
 .map {
+  border-radius: 20px;
+  background-clip: padding-box;
   position: relative;
-  height: 500px;
-  svg {
-    height: 500px;
-  }
+  height: 100%;
+  // svg {
+  //   height: 500px;
+  // }
 }
 .stats {
   position: absolute;
   z-index: 1;
   top: 0;
   left: 0;
-  margin: 5% 10%;
+  margin: 2% 2%;
 }
 
 .mapChart {
+  border-radius: 20px;
+  background-clip: padding-box;
   position: relative;
+  // margin: 50 0 0 0;
   height: 100%;
   width: 100%;
-  border-radius: 20px;
-  
-  margin: (-$widget-padding-vertical) (-$widget-padding-horizontal) 0;
 }
