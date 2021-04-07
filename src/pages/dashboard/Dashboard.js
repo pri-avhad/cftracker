@@ -15,14 +15,14 @@ import Co2 from '../../pages/components/charts/co2';
 
 import s from "./Dashboard.module.scss";
 var randomImages = [
-  require('./images/1.png'),
-  require('./images/2.png'),
-  require('./images/3.png'),
-  require('./images/4.png'),
-  require('./images/5.png'),
-  require('./images/6.png'),
-  require('./images/7.png'),
-  require('./images/8.png'),
+  require('./neededImages/1.png'),
+  require('./neededImages/2.png'),
+  require('./neededImages/3.png'),
+  require('./neededImages/4.png'),
+  require('./neededImages/5.png'),
+  require('./neededImages/6.png'),
+  require('./neededImages/7.png'),
+  require('./neededImages/8.png'),
 ];
 class Dashboard extends React.Component {
   
@@ -91,17 +91,17 @@ class Dashboard extends React.Component {
             <Row>
               <Col sm lg = {4} className ={s.pad}>
               <div className = {s.don}>
-              <a href = {"https://carbonfund.org/carbon-offsets/"} target = {"_blank"}><img className = {s.img} src= {require("./images/9.png")}  /></a>
+              <a href = {"https://carbonfund.org/carbon-offsets/"} target = {"_blank"}><img className = {s.img} src= {require("./neededImages/9.png")}  /></a>
                 </div>
               </Col>
               <Col sm lg = {4} className ={s.pad}>
               <div className = {s.don}>
-                <a href = {"https://www.terrapass.com/product/balanced-living-plan"} target = {"_blank"}><img className = {s.img}  src= {require("./images/10.png")} /></a>
+                <a href = {"https://www.terrapass.com/product/balanced-living-plan"} target = {"_blank"}><img className = {s.img}  src= {require("./neededImages/10.png")} /></a>
                 </div>
               </Col>
               <Col sm lg = {4} className ={s.pad}>
               <div className = {s.don}>
-              <a href = {"https://marketplace.goldstandard.org/collections/projects"} target = {"_blank"}><img className = {s.img}  src= {require("./images/11.png")} /></a>
+              <a href = {"https://marketplace.goldstandard.org/collections/projects"} target = {"_blank"}><img className = {s.img}  src= {require("./neededImages/11.png")} /></a>
                 </div>
               </Col>
             </Row>
@@ -111,30 +111,8 @@ class Dashboard extends React.Component {
               <Row>
                   <h4>Suggestions</h4>
                   <div className = {s.innerContainer}>
-                  {/* <img className = {s.img} src= {require("./images/${}.png")} /> */}
                   <img className = {s.img} src={randomImages[Math.floor(Math.random()*randomImages.length)]}/>
-                    {/* <div>
-                    <img className = {s.img} src= {require("./images/2.png")}/>
-                    </div>
-                    <div>
-                    <img className = {s.img} src= {require("./images/3.png")}/>
-                    </div>
-                    <div>
-                    <img className = {s.img} src= {require("./images/4.png")}/>
-                    </div>
-                    <div>
-                    <img className = {s.img} src= {require("./images/5.png")}/>
-                    </div>
-                    <div>
-                    <img className = {s.img} src= {require("./images/6.png")}/>
-                    </div>
-                    <div>
-                    <img className = {s.img} src= {require("./images/7.png")}/>
-                    </div>
-                    <div>
-                    <img className = {s.img} src= {require("./images/8.png")}/>
-                    </div> */}
-                  {/* </Carousel> */}
+                    
                   </div>
                   <h4>Individual footprint</h4>
                   <div className = {s.containerBoxSide}><Donut/></div>

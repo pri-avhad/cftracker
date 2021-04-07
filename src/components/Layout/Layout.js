@@ -20,6 +20,7 @@ import Sidebar from '../Sidebar';
 import BreadcrumbHistory from '../BreadcrumbHistory';
 import { openSidebar, closeSidebar } from '../../actions/navigation';
 import s from './Layout.module.scss';
+import Suggestions from '../../pages/suggestions/suggestions';
 
 class Layout extends React.Component {
   static propTypes = {
@@ -81,6 +82,7 @@ class Layout extends React.Component {
                     <Route path="/carbonfootprint" exact render={() => <Redirect to="/carbonfootprint/homepage" />} />
                     <Route path="/carbonfootprint/homepage" exact component={Dashboard} />
                     <Route path="/carbonfootprint/calculator" exact component={Calculator } />
+                    <Route path="/carbonfootprint/suggestions" exact component={Suggestions } />
                     <Redirect from="*" to="/carbonfootprint/homepage"/>
                   </Switch>
                 </CSSTransition>

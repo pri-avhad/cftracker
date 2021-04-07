@@ -22,7 +22,14 @@
   .visible{
     display: block;
    }
-  
+   .box{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 0px;
+    background: #ffffff;
+   }
   }
 .wrap {
   position: relative;
