@@ -83,14 +83,14 @@ class Calculator extends React.Component {
     return (
       
       <Row>
-        <Col>
+        <Col sm>
         <BreadcrumbHistory url={this.props.location.pathname} />   
-        <h3 className="page-title" style = {{marginTop: "0px"}}>
+        {/* <h3 className="page-title" style = {{marginTop: "0px"}}>
               Calculator &nbsp;
               <small>
                 <small style={{color: "black"}}>Check your Carbon-footprint</small>
               </small>
-            </h3>
+            </h3> */}
         <Row>
           <Col sm className = {s.pad}>
           <div className="calculator-box ">
@@ -202,7 +202,7 @@ class Calculator extends React.Component {
           </Col>
         </Row>    
         </Col>
-        <Col xs lg="3" className ={s.padSide}>
+        <Col sm xs lg="3" className ={s.padSide}>
           <div className = {s.containerBox2Side}>
             <Row>
               <h4>Carbon Footprint</h4>

@@ -14,13 +14,13 @@
 .calculator-box {
   -ms-overflow-style: none;  /* IE and Edge */
   // scrollbar-width: none; 
-  margin-top: 35px;
+  margin-top: 20px;
   margin-right: 20px;
-  margin-left: 20px;
+  margin-left: 0px;
   margin-bottom: 0px;
   padding: 20px 15px;
   height: 18vw;
-  width: 45%;
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
