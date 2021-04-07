@@ -140,7 +140,7 @@ class Header extends React.Component {
   render() {
     return (
       <Navbar className={`d-print-none `}>
-      <h3 style = {{paddingLeft: "10px"}}>Carbon footprint</h3>
+      <h3 style = {{paddingLeft: "10px", color: "white"}}>Carbon footprint</h3>
         <div className={s.burger}>
           <NavLink
               onClick={this.toggleSidebar}
