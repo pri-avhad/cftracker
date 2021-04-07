@@ -1,19 +1,25 @@
 .indi {
   position: relative;
-  padding: 10px;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  padding-top: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 0px;
+  margin-top: 10px;
+  margin-bottom: 0px;
   // text-align: center;
   align-self: center;
-  height: 140px;
+  height: 60%;
   width: 95%;
-  background-color: #ffffff;
+  background-color:transparent;
   display: inline;
   float: right;
 }
 .images {
   align-self: center;
-  height: 45%;
+  height: 40%;
   width: 90%;
   margin-top: 20px;
+}
+p{
+  font-size: 0.95rem;
 }
