@@ -6,6 +6,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Hammer from 'rc-hammerjs';
 
 import UIIcons from '../../pages/components/icons';
+import ErrorPage from '../../pages/error/ErrorPage';
 import UINotifications from '../../pages/notifications';
 import TablesStatic from '../../pages/tables/static';
 import MapsGoogle from '../../pages/components/maps/google';
@@ -84,6 +85,7 @@ class Layout extends React.Component {
                     <Route path="/carbonfootprint/tables" exact component={TablesStatic} />
                     <Route path="/carbonfootprint/components/maps" exact component={MapsGoogle} />
                     <Route path="/carbonfootprint/typography" exact component={CoreTypography} />
+                    <Redirect from="*" to="/carbonfootprint/homepage"/>
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
