@@ -5,12 +5,15 @@ import BreadcrumbHistory from '../../components/BreadcrumbHistory/BreadcrumbHist
 import './calculator.scss'
 import Result from './components/result';
 import Individual from './components/individual';
-import {Button} from 'reactstrap'
+import { connect } from 'react-redux';
+
+import {auth, updateData} from  '../../firebase/firebase.utils';
+
 
 
 class Calculator extends React.Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             result: 0,
     electricity : 0.0,
@@ -42,6 +45,20 @@ class Calculator extends React.Component {
     other :0
         }
     }
+    
+    user = auth.onAuthStateChanged(async userAuth=>{
+            if (userAuth) {
+                return userAuth;}});
+    
+   handleSubmit = async e => {
+      e.preventDefault()
+      const {result,housing,food,vehicle,product} =this.state;
+      
+      updateData(this.user, result,housing, food,vehicle,product)
+
+    
+    }
+
 
     render() {
       const food_result = parseFloat(this.state.redmeat) * 30 * 36 +
@@ -69,8 +86,8 @@ class Calculator extends React.Component {
       parseFloat(this.state.naturalgas) * 6.6 +
       parseFloat(this.state.fueloil)  * 3.1 +
       parseFloat(this.state.lpg)  * 1.8 +
-          parseFloat(this.state.waste) * 4 *0.715 +
-          parseFloat(this.state.water) * 30 * 0.376 ;
+      parseFloat(this.state.waste) * 4 *0.715 +
+      parseFloat(this.state.water) * 30 * 0.376 ;
 
     const carbon_footprint = parseFloat(housing_result + food_result +vehicle_result +product_result).toFixed(2);   
     console.log(carbon_footprint);
@@ -79,6 +96,8 @@ class Calculator extends React.Component {
     this.state.food = food_result.toFixed(2);
     this.state.vehicle = vehicle_result.toFixed(2);
     this.state.product = product_result.toFixed(2);
+
+    
 
     return (
       
@@ -209,7 +228,7 @@ class Calculator extends React.Component {
               <div className = {s.innerContainer}>
                 <Result result={this.state.result}/>
                 <div >
-                  <Button className = "buttonn">Log</Button>                              
+                  <button onClick={this.handleSubmit} className = "buttonn">Log</button>                              
                 </div>
               </div>
               <h4>Logging information</h4>
@@ -222,5 +241,12 @@ class Calculator extends React.Component {
   }
 }
 
-export default Calculator;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+ 
+});
+
+
+
+export default connect(mapStateToProps)(Calculator);
 

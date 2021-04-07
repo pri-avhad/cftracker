@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Container, Alert, Button, FormGroup, Label, InputGroup, InputGroupAddon, Input, InputGroupText } from 'reactstrap';
 import Widget from '../../components/Widget';
 import { loginUser } from '../../actions/user';
-import microsoft from '../../assets/microsoft.png';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
 class Login extends React.Component {
     static propTypes = {
@@ -20,8 +20,8 @@ class Login extends React.Component {
         super(props);
 
         this.state = {
-            email: 'admin@flatlogic.com',
-            password: 'password',
+            email: '',
+            password: '',
         };
 
         this.doLogin = this.doLogin.bind(this);
@@ -38,9 +38,24 @@ class Login extends React.Component {
         this.setState({ password: event.target.value });
     }
 
-    doLogin(e) {
+    doLogin= async e => {
         e.preventDefault();
-        this.props.dispatch(loginUser({ email: this.state.email, password: this.state.password }));
+        
+
+        const {email,password}=this.state;
+        try{
+            await auth.signInWithEmailAndPassword(email,password);
+            this.props.dispatch(loginUser({ email: this.state.email, password: this.state.password }));
+            this.setState({
+                email:'',
+                password:''
+            })
+        }
+        catch(error){
+            console.log(error);
+        }
+        
+
     }
 
     signUp() {
@@ -48,19 +63,22 @@ class Login extends React.Component {
     }
 
     render() {
+        console.log('inside login');
         const { from } = this.props.location.state || { from: { pathname: '/carbonfootprint/homepage' } }; // eslint-disable-line
 
-        // cant access login page while logged in
+        //cant access login page while logged in
         if (Login.isAuthenticated(JSON.parse(localStorage.getItem('authenticated')))) {
+            console.log(Login.isAuthenticated(JSON.parse(localStorage.getItem('authenticated'))));
             return (
                 <Redirect to={from} />
             );
         }
+    
 
         return (
             <div className="auth-page">
                 <Container>
-                    <Widget className="widget-auth mx-auto" title={<h3 className="mt-0">Login</h3>}>
+                    <Widget className="widget-auth mx-auto" title={<h3 className="mt-0">Login to your Web App</h3>}>
                         <p className="widget-auth-info">
                             Use your email to sign in.
                         </p>
@@ -110,15 +128,19 @@ class Login extends React.Component {
                                 </p>
                                 <Link className="d-block text-center mb-4" to="register">Create an Account</Link>
                                 <div className="social-buttons">
-                                    <Button color="primary" className="social-button">
+                                    <button onClick={signInWithGoogle} color="primary" className="social-button">
                                         <i className="social-icon social-google"/>
                                         <p className="social-text">GOOGLE</p>
-                                    </Button>
+                                    </button>
+                                    
                                 </div>
                             </div>
                         </form>
                     </Widget>
                 </Container>
+                <footer className="auth-footer">
+                {new Date().getFullYear()} &copy; Light Blue Template - React Admin Dashboard Template Made by <a href="https://flatlogic.com" rel="noopener noreferrer" target="_blank">Flatlogic LLC</a>.
+                </footer>
             </div>
         );
     }

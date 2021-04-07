@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 import { Container, Alert, Button, FormGroup, InputGroup, InputGroupAddon, InputGroupText, Input, Label } from 'reactstrap';
 import Widget from '../../components/Widget';
 import { registerUser, registerError } from '../../actions/register';
-import microsoft from '../../assets/microsoft.png';
+
 import Login from '../login';
+import { auth, createUser, signInWithGoogle } from '../../firebase/firebase.utils';
 
 class Register extends React.Component {
     static propTypes = {
@@ -17,6 +18,7 @@ class Register extends React.Component {
         super(props);
 
         this.state = {
+            
             email: '',
             password: '',
             confirmPassword: ''
@@ -59,19 +61,42 @@ class Register extends React.Component {
        return this.state.password && this.state.password === this.state.confirmPassword;
     }
 
-    doRegister(e) {
+    doRegister= async e => {
         e.preventDefault();
+
+        const {email, password} = this.state;
+
         if (!this.isPasswordValid()) {
             this.checkPassword();
-        } else {
+            return;
+        } 
+        try {
             this.props.dispatch(registerUser({
                 creds: {
                     email: this.state.email,
                     password: this.state.password
                 },
-                history: this.props.history
-            }));
+                 history: this.props.history
+             }));
+
+            const {user} = await auth.createUserWithEmailAndPassword(
+                email,
+                password);
+
+                console.log(user);
+                createUser(user);
+                
+             this.setState({
+                email: '',
+                password: '',
+                confirmPassword: ''
+            });
         }
+        catch(error){
+            console.error(error);
+        }
+
+    
     }
 
     render() {
@@ -83,7 +108,7 @@ class Register extends React.Component {
                 <Redirect to={from}/>
             );
         }
-
+        const {email, password, confirmPassword} = this.state;
         return (
             <div className="auth-page">
                 <Container>
@@ -107,7 +132,7 @@ class Register extends React.Component {
                                             <i className="la la-user text-white"/>
                                         </InputGroupText>
                                     </InputGroupAddon>
-                                    <Input id="email" className="input-transparent pl-3" value={this.state.email}
+                                    <Input id="email" className="input-transparent pl-3" value={email}
                                            onChange={this.changeEmail} type="email"
                                            required name="email" placeholder="Email"/>
                                 </InputGroup>
@@ -120,7 +145,7 @@ class Register extends React.Component {
                                             <i className="la la-lock text-white"/>
                                         </InputGroupText>
                                     </InputGroupAddon>
-                                    <Input id="password" className="input-transparent pl-3" value={this.state.password}
+                                    <Input id="password" className="input-transparent pl-3" value={password}
                                            onChange={this.changePassword} type="password"
                                            required name="password" placeholder="Password"/>
                                 </InputGroup>
@@ -133,7 +158,7 @@ class Register extends React.Component {
                                             <i className="la la-lock text-white"/>
                                         </InputGroupText>
                                     </InputGroupAddon>
-                                    <Input id="confirmPassword" className="input-transparent pl-3" value={this.state.confirmPassword}
+                                    <Input id="confirmPassword" className="input-transparent pl-3" value={confirmPassword}
                                            onChange={this.changeConfirmPassword} onBlur={this.checkPassword} type="password"
                                            required name="confirmPassword" placeholder="Confirm"/>
                                 </InputGroup>
@@ -146,10 +171,11 @@ class Register extends React.Component {
                                 </p>
                                 <Link className="d-block text-center mb-4" to="login">Enter the account</Link>
                                 <div className="social-buttons">
-                                    <Button color="primary" className="social-button">
+                                    <button onClick={signInWithGoogle} color="primary" className="social-button">
                                         <i className="social-icon social-google"/>
                                         <p className="social-text">GOOGLE</p>
-                                    </Button>
+                                    </button>
+                                   
                                 </div>
                             </div>
                         </form>
@@ -201,6 +227,9 @@ class Register extends React.Component {
                         {/*<Link className="d-block text-center" to="login">Enter the account</Link>*/}
                     {/*</Widget>*/}
                 </Container>
+                <footer className="auth-footer">
+                {new Date().getFullYear()} &copy; Light Blue Template - React Admin Dashboard Template Made by <a href="https://flatlogic.com" rel="noopener noreferrer" target="_blank">Flatlogic LLC</a>.                    
+                </footer>
             </div>
         );
     }
