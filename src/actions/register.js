@@ -21,7 +21,7 @@ export function registerUser(payload) {
     return (dispatch) => {
         if (payload.creds.email.length > 0 && payload.creds.password.length > 0) {
             toast.success("You've been registered successfully");
-            payload.history.push('/login');
+            payload.history.push('/carbonfootprint/homepage');
         } else {
             dispatch(registerError('Something was wrong. Try again'));
         }

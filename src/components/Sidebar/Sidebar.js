@@ -2,21 +2,18 @@ import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Progress, Alert} from 'reactstrap';
 import {withRouter} from 'react-router-dom';
 import {dismissAlert} from '../../actions/alerts';
 import s from './Sidebar.module.scss';
 import LinksGroup from './LinksGroup';
 import Button from 'reactstrap/lib/Button';
 import PowerIcon from "../Icons/HeaderIcons/PowerIcon";
-
+import {auth} from '../../firebase/firebase.utils'
 import {changeActiveSidebarItem} from '../../actions/navigation';
 import {logoutUser} from '../../actions/user';
 import HomeIcon from '../Icons/SidebarIcons/HomeIcon';
-import TypographyIcon from '../Icons/SidebarIcons/TypographyIcon';
 import TablesIcon from '../Icons/SidebarIcons/TablesIcon';
-import NotificationsIcon from '../Icons/SidebarIcons/NotificationsIcon';
-import ComponentsIcon from '../Icons/SidebarIcons/ComponentsIcon';
+
 
 
 
@@ -157,7 +154,10 @@ class Sidebar extends React.Component {
                             },
                         ]}
                     /> */}
-                    <Button  className={s.logbtn} onClick = {this.doLogout}>
+                    <Button  className={s.logbtn} onClick={()=> {
+                        auth.signOut();
+                        localStorage.removeItem('autheticated');
+                        this.doLogout()}}>
                      <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
                         activeItem={this.props.activeItem}

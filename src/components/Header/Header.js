@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
+import {auth} from '../../firebase/firebase.utils'
 import {
   Navbar,
   Nav,
@@ -143,10 +144,16 @@ class Header extends React.Component {
       <h3 style = {{paddingLeft: "10px", color: "white"}}>Carbon footprint</h3>
         <div className={s.burger}>
           <NavLink
-              onClick={this.toggleSidebar}
-              className={`d-md-none ${s.navItem} text-white`}
-              href="#"
-            >
+                onClick={()=> {
+                  auth.signOut();
+                  localStorage.removeItem('autheticated');
+                  this.doLogout();
+                  
+              
+                }}
+                className={`${s.navItem} text-white`}
+                href="login"
+              >
               <BurgerIcon className={s.headerIcon} />
             </NavLink>
         </div>

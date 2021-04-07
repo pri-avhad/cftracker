@@ -13,6 +13,8 @@ import LayoutComponent from '../components/Layout';
 import Login from '../pages/login';
 import Register from '../pages/register';
 import { logoutUser } from '../actions/user';
+import {auth, createUser} from '../firebase/firebase.utils';
+
 
 const PrivateRoute = ({dispatch, component, ...rest }) => {
     if (!Login.isAuthenticated(JSON.parse(localStorage.getItem('authenticated')))) {
@@ -27,7 +29,38 @@ const PrivateRoute = ({dispatch, component, ...rest }) => {
 
 const CloseButton = ({closeToast}) => <i onClick={closeToast} className="la la-close notifications-close"/>
 
+ 
 class App extends React.PureComponent {
+   constructor(){
+        super();
+        this.state={
+            currentUser:null
+        }
+    }
+    
+    unsubscribeFromAuth=null;
+    componentDidMount(){
+        this.unsubscribeFromAuth=auth.onAuthStateChanged(async userAuth=>{
+            if (userAuth) {
+                localStorage.setItem('authenticated',true);
+                const userRef = await createUser(userAuth);
+                userRef.onSnapshot(snapShot => {
+                    this.setState({
+                            currentUser:{
+                            id: snapShot.id,
+                            ...snapShot.data()
+                        }
+                    },()=> console.log(this.state))
+                });
+            
+            }  
+            this.setState({currentUser:userAuth})  
+        
+      
+    })}
+    componentWillUnmount(){
+        this.unsubscribeFromAuth();
+    }
   render() {
     return (
         <div>
@@ -54,8 +87,10 @@ class App extends React.PureComponent {
   }
 }
 
+
+
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps)(App);
