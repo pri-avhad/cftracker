@@ -13,6 +13,7 @@ import MapsGoogle from '../../pages/components/maps/google';
 import CoreTypography from '../../pages/typography';
 import Charts from '../../pages/components/charts/Charts';
 import Dashboard from '../../pages/dashboard';
+import Calculator from '../../pages/calculator/calculator';
 
 import Header from '../Header';
 import Sidebar from '../Sidebar';
@@ -79,12 +80,7 @@ class Layout extends React.Component {
                   <Switch>
                     <Route path="/carbonfootprint" exact render={() => <Redirect to="/carbonfootprint/homepage" />} />
                     <Route path="/carbonfootprint/homepage" exact component={Dashboard} />
-                    <Route path="/carbonfootprint/components/icons" exact component={UIIcons} />
-                    <Route path="/carbonfootprint/notifications" exact component={UINotifications} />
-                    <Route path="/carbonfootprint/components/charts" exact component={Charts} />
-                    <Route path="/carbonfootprint/tables" exact component={TablesStatic} />
-                    <Route path="/carbonfootprint/components/maps" exact component={MapsGoogle} />
-                    <Route path="/carbonfootprint/typography" exact component={CoreTypography} />
+                    <Route path="/carbonfootprint/calculator" exact component={Calculator } />
                     <Redirect from="*" to="/carbonfootprint/homepage"/>
                   </Switch>
                 </CSSTransition>

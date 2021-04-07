@@ -75,7 +75,7 @@ class Dashboard extends React.Component {
                 <small style={{color: "black"}}>Carbon-footprint statistics</small>
               </small>
             </h3>
-            <Row>
+            <Row> 
               <Col sm={6} className ={s.pad}>
               <div className = {s.containerBox}>
                   <Map />

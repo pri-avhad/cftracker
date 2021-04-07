@@ -110,6 +110,15 @@ class Sidebar extends React.Component {
                         link="/carbonfootprint/calculator"
                         index="calculator"
                     /> */}
+                    <LinksGroup
+                        onActiveSidebarItemChange={t => this.props.dispatch(changeActiveSidebarItem(t))}
+                        activeItem={this.props.activeItem}
+                        header="Calculator"
+                        isHeader
+                        iconName={<TablesIcon className={s.menuIcon} />}
+                        link="/carbonfootprint/calculator"
+                        index="calculator"
+                    />
                     {/* <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
                         activeItem={this.props.activeItem}

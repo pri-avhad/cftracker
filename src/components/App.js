@@ -5,7 +5,7 @@ import { HashRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 /* eslint-disable */
-import ErrorPage from '../pages/error';
+import ErrorPage from '../pages/error/ErrorPage';
 /* eslint-enable */
 
 import '../styles/theme.scss';
@@ -38,7 +38,7 @@ class App extends React.PureComponent {
             />
             <HashRouter>
                 <Switch>
-                    <Route path="/" exact render={() => <Redirect to="/carbonfootprint"/>}/>
+                    <Route path="/" exact render={() => <Redirect to="/carbonfootprint/homepage"/>}/>
                     <Route path="/carbonfootprint" exact render={() => <Redirect to="/carbonfootprint"/>}/>
                     <PrivateRoute path="/carbonfootprint" dispatch={this.props.dispatch} component={LayoutComponent}/>
                     <Route path="/register" exact component={Register}/>
