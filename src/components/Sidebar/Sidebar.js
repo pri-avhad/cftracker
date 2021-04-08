@@ -13,6 +13,7 @@ import {changeActiveSidebarItem} from '../../actions/navigation';
 import {logoutUser} from '../../actions/user';
 import HomeIcon from '../Icons/SidebarIcons/HomeIcon';
 import TablesIcon from '../Icons/SidebarIcons/TablesIcon';
+import ComponentsIcon from '../Icons/SidebarIcons/ComponentsIcon';
 
 
 
@@ -121,7 +122,7 @@ class Sidebar extends React.Component {
                         activeItem={this.props.activeItem}
                         header="Suggestions"
                         isHeader
-                        iconName={<HomeIcon className={s.menuIcon} />}
+                        iconName={<ComponentsIcon className={s.menuIcon}/>}
                         link="/carbonfootprint/suggestions"
                         index="suggestions"
                     />

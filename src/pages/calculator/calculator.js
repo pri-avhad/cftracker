@@ -6,6 +6,7 @@ import './calculator.scss'
 import Result from './components/result';
 import Individual from './components/individual';
 import { connect } from 'react-redux';
+import { MDBContainer, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink } from "mdbreact";
 
 import {auth, updateData} from  '../../firebase/firebase.utils';
 
@@ -45,7 +46,22 @@ class Calculator extends React.Component {
     other :0
         }
     }
-    
+    // state = {
+    //   items: {
+    //     default: "1",
+    //   }
+    // };
+  
+    // togglePills = (type, tab) => e => {
+    //   e.preventDefault();
+    //   if (this.state.items[type] !== tab) {
+    //     let items = { ...this.state.items };
+    //     items[type] = tab;
+    //     this.setState({
+    //       items
+    //     });
+    //   }
+    // };
     user = auth.onAuthStateChanged(async userAuth=>{
             if (userAuth) {
                 return userAuth;}});
@@ -103,44 +119,43 @@ class Calculator extends React.Component {
       
       <Row>
         <Col sm>
-        <BreadcrumbHistory url={this.props.location.pathname} />   
-        {/* <h3 className="page-title" style = {{marginTop: "0px"}}>
-              Calculator &nbsp;
-              <small>
-                <small style={{color: "black"}}>Check your Carbon-footprint</small>
-              </small>
-            </h3> */}
-        <Row>
-          <Col sm className = {s.pad}>
-          <div className="calculator-box ">
-            <h4>Housing</h4>
-            <form className="input-div">
-            <div className = "max">
-            <label >Electricity <small>in kWh/month</small></label><input className="input-field" type="text" name="electricity" onChange={e=> this.setState({naturalgas:e.target.value, result:carbon_footprint},()=>console.log(this.state))}></input>
-            </div>
-            <div className = "max">
-            <label>Natural Gas <small>in therms/month</small></label><input className="input-field" type="text" name="naturalgas"  onChange={e=> this.setState({naturalgas:e.target.value, result:carbon_footprint},()=>console.log(this.state))}></input>
-            </div>
-            <div className = "max">
-            <label>Fuel Oil <small>in litres/month</small></label><input className="input-field" type="text" name="fueloil"  onChange={e=> this.setState({fueloil :e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
-            </div>
-            <div className = "max">
-            <label>LPG <small>in litres/month</small></label><input className="input-field" type="text" name="lpg"  onChange={e=> this.setState({lpg:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
-            </div>
-            <div className = "max">
-            <label>Waste <small>in kg/week</small></label><input className="input-field" type="text" name="waste"  onChange={e=> this.setState({waste:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
-            </div>
-            <div className = "max">
-            <label>Water <small>in litres/day</small></label><input className="input-field" type="text" name="water"  onChange={e=> this.setState({water:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>            
-            </div>
-            </form>
-         </div>
-          </Col>
-          <Col sm className = {s.pad}>
-          <div className="calculator-box">
-         <h4>Food</h4>
-            <form className="input-div">
-            <div className = "max">
+          <BreadcrumbHistory url={this.props.location.pathname} />   
+          <Row style ={{paddingBottom: "40px"}}> 
+              <Col sm={6} className ={s.pad}>
+              {/* <div className = {s.containerBox}> */}
+                {/* <img className = {s.img} src= {require("./calcImages/intro.png")}  /> */}
+              {/* </div> */}
+              <h4 className = {s.noMargin}><b><b>Calculating Carbon footprint... </b></b></h4>
+              <p>
+              Carbon emissions come mainly from our food, transportation, and homes. So, how do you compare? Our carbon footprint calculator helps you estimate your carbon emissions and the number of trees you need to offset your carbon footprint.
+Why trees? Because trees have been quietly offsetting these carbon emissions for centuries. We all produce carbon dioxide (CO2), directly or indirectly, when we use products produced using fossil fuels. We also indirectly produce carbon dioxide when we eat food that has been produced with artificial fertilizers and pesticides (which are made from oil). In total, the amount of carbon dioxide you produce is your “carbon footprint.” While it seems like a lot of work to figure out your carbon footprint, it is actually easier than you think. In only a few minutes using our carbon footprint calculator, you can estimate your carbon emissions and how many trees it take to offset them.
+              </p>
+              </Col>
+              <Col sm={6} className ={s.pad}>
+              <div className = "form">
+              <form className="input-div">
+              <h4 className ="title">Housing</h4>
+              <div className = "max">
+              <label >Electricity <small>in kWh/month</small></label><input className="input-field" type="text" name="electricity" onChange={e=> this.setState({naturalgas:e.target.value, result:carbon_footprint},()=>console.log(this.state))}></input>
+              </div>
+              <div className = "max">
+              <label>Natural Gas <small>in therms/month</small></label><input className="input-field" type="text" name="naturalgas"  onChange={e=> this.setState({naturalgas:e.target.value, result:carbon_footprint},()=>console.log(this.state))}></input>
+              </div>
+              <div className = "max">
+              <label>Fuel Oil <small>in litres/month</small></label><input className="input-field" type="text" name="fueloil"  onChange={e=> this.setState({fueloil :e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
+              </div>
+              <div className = "max">
+              <label>LPG <small>in litres/month</small></label><input className="input-field" type="text" name="lpg"  onChange={e=> this.setState({lpg:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
+              </div>
+              <div className = "max">
+              <label>Waste <small>in kg/week</small></label><input className="input-field" type="text" name="waste"  onChange={e=> this.setState({waste:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
+              </div>
+              <div className = "max">
+              <label>Water <small>in litres/day</small></label><input className="input-field" type="text" name="water"  onChange={e=> this.setState({water:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>            
+              </div>
+
+              <h4 className ="title">Food</h4>
+              <div className = "max">
             <label>White Meat <small>in kCal/day</small></label><input className="input-field" type="text" name="whitemeat"  onChange={e=> this.setState({whitemeat:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
             </div>
             <div className = "max">
@@ -164,15 +179,8 @@ class Calculator extends React.Component {
             <div className = "max">
             <label>Snacks <small>in kCal/day</small></label><input className="input-field" type="text" name="snacks"  onChange={e=> this.setState({snacks:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>         
             </div>
-            </form>
-         </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm className = {s.pad}>
-          <div className="calculator-box">
-            <h4>Travel</h4>
-            <form className="input-div">
+
+            <h4 className ="title">Travel</h4>
             <div className = "max">
             <label>Vehicle <small>in km/month</small></label><input className="input-field" type="text" name="vehicle"  onChange={e=> this.setState({vehicle:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
             </div>
@@ -191,13 +199,8 @@ class Calculator extends React.Component {
             <div className = "max">
             <label>Flying <small>in km/month</small></label><input className="input-field" type="text" name="flying"  onChange={e=> this.setState({flying:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>          
             </div>
-            </form>
-         </div>
-          </Col>
-          <Col sm className = {s.pad}>
-          <div className="calculator-box">
-            <h4>Products</h4>
-            <form className="input-div">
+
+            <h4 className ="title">Products</h4>
             <div className = "max">
             <label>Electrical <small>in Rs/month</small></label><input className="input-field" type="text" name="elect"  onChange={e=> this.setState({elect:e.target.value},()=>console.log(this.state))}></input>
             </div>
@@ -216,10 +219,29 @@ class Calculator extends React.Component {
             <div className = "max">
             <label>Other <small>in Rs/month</small></label><input className="input-field" type="text" name="other"  onChange={e=> this.setState({other:e.target.value},()=>console.log(this.state))}></input>         
             </div>
-            </form>
-         </div>
-          </Col>
-        </Row>    
+
+              </form>
+              </div>
+              </Col>
+            </Row>
+            <h4 className = {s.noMargin}>Benefits of calculating </h4>
+            <Row>
+              <Col sm lg = {4} className ={s.pad}>
+              <div className = {s.don}>
+                <img className = {s.img} src= {require("./calcImages/13.png")}  />
+              </div>
+              </Col>
+              <Col sm lg = {4} className ={s.pad}>
+              <div className = {s.don}>
+                <img className = {s.img}  src= {require("./calcImages/14.png")} />
+              </div>
+              </Col>
+              <Col sm lg = {4} className ={s.pad}>
+              <div className = {s.don}>
+                <img className = {s.img}  src= {require("./calcImages/15.png")} />
+              </div>
+              </Col>
+            </Row>
         </Col>
         <Col sm xs lg="3" className ={s.padSide}>
           <div className = {s.containerBox2Side}>
