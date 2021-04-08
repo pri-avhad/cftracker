@@ -120,7 +120,7 @@ class Calculator extends React.Component {
       <Row>
         <Col sm>
           <BreadcrumbHistory url={this.props.location.pathname} />   
-          <Row style ={{paddingBottom: "40px"}}> 
+          <Row style ={{paddingBottom: "10px",paddingTop: "25px"}}> 
               <Col sm={6} className ={s.pad}>
               {/* <div className = {s.containerBox}> */}
                 {/* <img className = {s.img} src= {require("./calcImages/intro.png")}  /> */}
