@@ -65,7 +65,7 @@ class Suggestions extends React.Component {
                   <h4>Your Carbon-footprint</h4>
                   <div className = {s.innerContainer}>
                   <div className = "r">
-                    <h3>100 kgs/month</h3>
+                    <h3>2 kgs/month</h3>
                     </div>
                   </div>
                   <h4>Individual footprint</h4>

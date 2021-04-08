@@ -50,10 +50,10 @@ var donut= {
         },
         data: [
           //update from DB
-          { id:0, value: 100, name: "Housing" },
-          { id:1, value: 40, name: "Travel" },
-          { id:2, value: 52, name: "Food" },
-          { id:3, value: 22, name: "Product" },
+          { id:0, value: 0.8, name: "Housing" },
+          { id:1, value: 0.4, name: "Travel" },
+          { id:2, value: 0.5, name: "Food" },
+          { id:3, value: 0.3, name: "Product" },
         ],
       },
     ],
