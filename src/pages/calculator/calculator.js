@@ -6,15 +6,14 @@ import './calculator.scss'
 import Result from './components/result';
 import Individual from './components/individual';
 import { connect } from 'react-redux';
-import { MDBContainer, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink } from "mdbreact";
-
+import {setCurrentUser} from '../../reducers/user/user.actions';
 import {auth, updateData} from  '../../firebase/firebase.utils';
 
 
 
 class Calculator extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             result: 0,
     electricity : 0.0,
@@ -62,18 +61,28 @@ class Calculator extends React.Component {
     //     });
     //   }
     // };
-    user = auth.onAuthStateChanged(async userAuth=>{
-            if (userAuth) {
-                return userAuth;}});
-    
-   handleSubmit = async e => {
-      e.preventDefault()
-      const {result,housing,food,vehicle,product} =this.state;
+  handleSubmit=(e)=>{
+    e.preventDefault();
+    const {result,housing,food,vehicle,product} =this.state;
+    auth.onAuthStateChanged(async userAuth => {
+        if (userAuth) {
+            console.log(userAuth);
+            console.log(result);
+            console.log(housing);
+            console.log(food);
+            console.log(vehicle);
+            console.log(product);
+            const userRef = await updateData(userAuth, result , housing, food,vehicle,product);
+            console.log(userRef);
+        }
       
-      updateData(this.user, result,housing, food,vehicle,product)
+      })
+        
+
+  }
 
     
-    }
+
 
 
     render() {
@@ -262,12 +271,11 @@ Why trees? Because trees have been quietly offsetting these carbon emissions for
     );
   }
 }
-
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
- 
+const mapStateToProps = (state, user) => ({
+  
+  isAuthenticated: state.auth1.isAuthenticated,
+  currentUser: user.currentUser
 });
-
 
 
 export default connect(mapStateToProps)(Calculator);

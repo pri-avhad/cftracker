@@ -7,11 +7,12 @@ import * as serviceWorker from './serviceWorker';
 
 import App from './components/App';
 import reducers from './reducers';
+import logger from 'redux-logger';
 
-const store = createStore(
-  reducers,
-  applyMiddleware(ReduxThunk)
-);
+
+const middlewares = [logger, ReduxThunk];
+
+const store = createStore(reducers, applyMiddleware(...middlewares));
 
 ReactDOM.render(
     <Provider store={store}>

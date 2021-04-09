@@ -3,7 +3,8 @@ import {
 } from '../actions/user';
 
 const authenticated = localStorage.getItem('authenticated');
-export default function auth(state = {
+console.log(authenticated);
+export default function auth1(state = {
     isFetching: false,
     isAuthenticated: authenticated,
 }, action) {

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router';
 import { HashRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+//import {auth1} from '../reducers/auth';
 
 /* eslint-disable */
 import ErrorPage from '../pages/error/ErrorPage';
@@ -14,9 +15,11 @@ import Login from '../pages/login';
 import Register from '../pages/register';
 import { logoutUser } from '../actions/user';
 import {auth, createUser} from '../firebase/firebase.utils';
+import {setCurrentUser} from '../reducers/user/user.actions';
 
 
 const PrivateRoute = ({dispatch, component, ...rest }) => {
+   
     if (!Login.isAuthenticated(JSON.parse(localStorage.getItem('authenticated')))) {
         dispatch(logoutUser());
         return (<Redirect to="/login"/>)
@@ -31,37 +34,31 @@ const CloseButton = ({closeToast}) => <i onClick={closeToast} className="la la-c
 
  
 class App extends React.PureComponent {
-   constructor(){
-        super();
-        this.state={
-            currentUser:null
-        }
-    }
     
     unsubscribeFromAuth=null;
     componentDidMount(){
-        this.unsubscribeFromAuth=auth.onAuthStateChanged(async userAuth=>{
-            if (userAuth) {
-                localStorage.setItem('authenticated',true);
-                const userRef = await createUser(userAuth);
-                userRef.onSnapshot(snapShot => {
-                    this.setState({
-                            currentUser:{
-                            id: snapShot.id,
-                            ...snapShot.data()
-                        }
-                    },()=> console.log(this.state))
-                });
-            
-            }  
-            this.setState({currentUser:userAuth})  
-        
-      
-    })}
+        const { setCurrentUser } = this.props;
+
+        this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+        if (userAuth) {
+            const userRef = await createUser(userAuth);
+
+            userRef.onSnapshot(snapShot => {
+            setCurrentUser({
+                id: snapShot.id,
+                ...snapShot.data()
+            });
+            });
+        }
+
+        setCurrentUser(userAuth);
+        });
+       }
     componentWillUnmount(){
         this.unsubscribeFromAuth();
     }
   render() {
+      
     return (
         <div>
             <ToastContainer
@@ -89,8 +86,16 @@ class App extends React.PureComponent {
 
 
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = (state, user) => ({
+  
+  isAuthenticated: state.auth1.isAuthenticated,
+  currentUser: user.currentUser
+});
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

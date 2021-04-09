@@ -63,13 +63,16 @@ var config = {
   export const updateData = async (userAuth, log , housingvalue ,foodvalue, travelvalue , productvalue) => {
     if(!userAuth) return;
    const userRef = firestore.doc(`users/${userAuth.uid}`)
+   console.log(userRef);
    const snapshot = await userRef.get();
     console.log(snapshot);
+    console.log('updateData is working');
 
-    if(!snapshot.exists){
+    if(snapshot.exists){
+        
         const date = new Date();
         const m = date.toLocaleString('default', {month:'long'});
-        console.log(`${userAuth.id}`)
+        console.log(`${userAuth.uid}`)
         console.log(m);
         try{
           userRef.update({

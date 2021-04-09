@@ -145,9 +145,9 @@ class Login extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        isFetching: state.auth.isFetching,
-        isAuthenticated: state.auth.isAuthenticated,
-        errorMessage: state.auth.errorMessage,
+        isFetching: state.auth1.isFetching,
+        isAuthenticated: state.auth1.isAuthenticated,
+        errorMessage: state.auth1.errorMessage,
     };
 }
 
