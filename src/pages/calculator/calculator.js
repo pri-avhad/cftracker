@@ -273,10 +273,10 @@ Why trees? Because trees have been quietly offsetting these carbon emissions for
 }
 const mapStateToProps = (state, user) => ({
   
-  isAuthenticated: state.auth1.isAuthenticated,
+  isAuthenticated: state.isAuthenticated,
   currentUser: user.currentUser
 });
 
 
-export default connect(mapStateToProps)(Calculator);
+export default connect(null,mapStateToProps)(Calculator);
 

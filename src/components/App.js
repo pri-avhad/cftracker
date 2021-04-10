@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
 import { Switch, Route, Redirect } from 'react-router';
 import { HashRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -16,6 +17,7 @@ import Register from '../pages/register';
 import { logoutUser } from '../actions/user';
 import {auth, createUser} from '../firebase/firebase.utils';
 import {setCurrentUser} from '../reducers/user/user.actions';
+
 
 
 const PrivateRoute = ({dispatch, component, ...rest }) => {
@@ -37,6 +39,7 @@ class App extends React.PureComponent {
     
     unsubscribeFromAuth=null;
     componentDidMount(){
+        //const { dispatch } = this.props
         const { setCurrentUser } = this.props;
 
         this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -86,14 +89,16 @@ class App extends React.PureComponent {
 
 
 
-const mapStateToProps = (state, user) => ({
-  
-  isAuthenticated: state.auth1.isAuthenticated,
+const mapStateToProps = (state, user) => {
+    return { 
+  isAuthenticated: state.isAuthenticated,
   currentUser: user.currentUser
-});
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-});
+}};
+
+function mapDispatchToProps (dispatch) {
+    return{
+  setCurrentUser: user => dispatch(setCurrentUser(user)), dispatch
+}};
 
 export default connect(
   mapStateToProps,
