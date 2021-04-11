@@ -3,7 +3,9 @@ import './result.scss'
 
 const Result = ({result}) => (
     <div className = "innerContainer">
-        <p className = "text">Your calculated Carbon footprint is <b><b>{result} kgs/month</b></b>. You can choose to log this information into your account for this month.</p>
+        <p className = "text" style = {{fontSize: "1.4rem"}}>Your result is </p>
+        <p className = "text" style = {{fontSize: "1.7rem"}}><b><b>{result}</b></b></p>
+        <p className = "text" style = {{fontSize: "1.4rem"}}>kgs/month</p>
     </div>
     //add button to update DB
 );

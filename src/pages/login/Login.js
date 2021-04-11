@@ -83,10 +83,14 @@ class Login extends React.Component {
         
 
         return (
-            
+            <div class="parent">
+            <div class="div1"> </div>
+            <div class="div2"></div>
+            <div class="div3">
+                <img src= {require("./20944241.jpg")} width="100%"></img>
+            </div>
+            <div class="div4">
             <div className='sign-in'>
-            <Container>
-            </Container>
                 <h2>LOGIN TO CFTRACKER</h2>
                 <span>Sign in with your email and password</span>
 
@@ -124,72 +128,10 @@ class Login extends React.Component {
                 </div>
                 </form>
             </div>
-       
+            </div>
+            </div>
             
-            // <div className="auth-page">
-            //     <Container>
-                
-            //         <Widget className="widget-auth mx-auto" title={<h3 className="mt-0">Login to your Web App</h3>}>
-            //             <p className="widget-auth-info">
-            //                 Use your email to sign in.
-            //             </p>
-            //             <form onSubmit={this.doLogin}>
-            //                 {
-            //                     this.props.errorMessage && (
-            //                         <Alert className="alert-sm widget-middle-overflow rounded-0" color="danger">
-            //                             {this.props.errorMessage}
-            //                         </Alert>
-            //                     )
-            //                 }
-            //                 <FormGroup className="mt">
-            //                     <Label for="email">Email</Label>
-            //                     <InputGroup className="input-group-no-border">
-            //                         <InputGroupAddon addonType="prepend">
-            //                             <InputGroupText>
-            //                                 <i className="la la-user text-white"/>
-            //                             </InputGroupText>
-            //                         </InputGroupAddon>
-            //                         <Input id="email" className="input-transparent pl-3" value={this.state.email} onChange={this.changeEmail} type="email"
-            //                                required name="email" placeholder="Email"/>
-            //                     </InputGroup>
-            //                 </FormGroup>
-            //                 <FormGroup>
-            //                     <Label for="password">Password</Label>
-            //                     <InputGroup className="input-group-no-border">
-            //                         <InputGroupAddon addonType="prepend">
-            //                             <InputGroupText>
-            //                                 <i className="la la-lock text-white"/>
-            //                             </InputGroupText>
-            //                         </InputGroupAddon>
-            //                         <Input id="password" className="input-transparent pl-3" value={this.state.password}
-            //                                onChange={this.changePassword} type="password"
-            //                                required name="password" placeholder="Password"/>
-            //                     </InputGroup>
-            //                 </FormGroup>
-            //                 <div className="bg-widget auth-widget-footer">
-            //                     <Button type="submit" color="danger" className="auth-btn"
-            //                             size="sm" style={{color: '#fff'}}>
-            //                       <span className="auth-btn-circle" style={{marginRight: 8}}>
-            //                         <i className="la la-caret-right"/>
-            //                       </span>
-            //                       {this.props.isFetching ? 'Loading...' : 'Login'}
-            //                     </Button>
-            //                     <p className="widget-auth-info mt-4">
-            //                         Don't have an account? Sign up now!
-            //                     </p>
-            //                     <Link className="d-block text-center mb-4" to="register">Create an Account</Link>
-            //                     <div className="social-buttons">
-            //                         <button onClick={signInWithGoogle} color="primary" className="social-button">
-            //                             <i className="social-icon social-google"/>
-            //                             <p className="social-text">GOOGLE</p>
-            //                         </button>
-                                    
-            //                     </div>
-            //                 </div>
-            //             </form>
-            //         </Widget>
-            //     </Container>
-            // </div>
+            
         );
     }
 }

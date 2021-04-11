@@ -111,49 +111,58 @@ class Register extends React.Component {
         }
         const {email, password, confirmPassword} = this.state;
         return (
-            <div className='sign-in'>
-                <h2>REGISTER ON CFTRACKER</h2>
-                <span>Sign up with your email and password</span>
-                
-                <form onSubmit={this.doRegister}>
-                {
-                    this.props.errorMessage && (
-                    <Alert className="alert-sm widget-middle-overflow rounded-0" color="danger">
-                        {this.props.errorMessage}
-                    </Alert>
-                    ) 
-                }
-                <FormInput
-                    name='email'
-                    type='email'
-                    handleChange={this.changeEmail}
-                    value={email}
-                    label='Email'
-                    required
-                />
-                <FormInput
-                    name='password'
-                    type='password'
-                    value={password}
-                    handleChange={this.changePassword}
-                    label='Password'
-                    required
-                />
-                <FormInput
-                    name='confirmPassword'
-                    type='password'
-                    value={confirmPassword}
-                    handleChange={this.changeConfirmPassword}
-                    label='Confirm Password'
-                    required
-                />
-                <span>Already have an account?<a style={{color:"red"}} href="login"> Please Login </a></span>
-                
-                <div className='buttons'>
-                    <CustomButton type='submit'> Register </CustomButton>
+            <div class="parent">
+                <div class="div1"> </div>
+                <div class="div2"></div>
+                <div class="div3">
+                    <img src= {require("./20944241.jpg")} width="100%"></img></div>
+                <div class="div4">
+                <div className='sign-in'>
+                        <h2>REGISTER ON CFTRACKER</h2>
+                        <span>Sign up with your email and password</span>
+                        
+                        <form onSubmit={this.doRegister}>
+                        {
+                            this.props.errorMessage && (
+                            <Alert className="alert-sm widget-middle-overflow rounded-0" color="danger">
+                                {this.props.errorMessage}
+                            </Alert>
+                            ) 
+                        }
+                        <FormInput
+                            name='email'
+                            type='email'
+                            handleChange={this.changeEmail}
+                            value={email}
+                            label='Email'
+                            required
+                        />
+                        <FormInput
+                            name='password'
+                            type='password'
+                            value={password}
+                            handleChange={this.changePassword}
+                            label='Password'
+                            required
+                        />
+                        <FormInput
+                            name='confirmPassword'
+                            type='password'
+                            value={confirmPassword}
+                            handleChange={this.changeConfirmPassword}
+                            label='Confirm Password'
+                            required
+                        />
+                        <span>Already have an account?<a style={{color:"red"}} href="login"> Please Login </a></span>
+                        
+                        <div className='buttons'>
+                            <CustomButton type='submit'> Register </CustomButton>
+                        </div>
+                        </form>
+                    </div>
                 </div>
-                </form>
             </div>
+            
        
             // <div className="auth-page">
             //     <Container>
