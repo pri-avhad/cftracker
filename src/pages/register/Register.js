@@ -114,9 +114,9 @@ class Register extends React.Component {
             <div class="parent">
                 <div class="div1"> </div>
                 <div class="div2"></div>
+                <div class="div4"  style = {{backgroundColor: "#E2E2E4"}}>
+                    <img src= {require("./img.png")} width="100%"></img></div>
                 <div class="div3">
-                    <img src= {require("./20944241.jpg")} width="100%"></img></div>
-                <div class="div4">
                 <div className='sign-in'>
                         <h2>REGISTER ON CFTRACKER</h2>
                         <span>Sign up with your email and password</span>

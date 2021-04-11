@@ -86,10 +86,10 @@ class Login extends React.Component {
             <div class="parent">
             <div class="div1"> </div>
             <div class="div2"></div>
-            <div class="div3">
-                <img src= {require("./20944241.jpg")} width="100%"></img>
+            <div class="div3" style = {{backgroundColor: "#E2E2E4"}}>
+                <img src= {require("./img.png")} width="100%"></img>
             </div>
-            <div class="div4">
+            <div class="div4" >
             <div className='sign-in'>
                 <h2>LOGIN TO CFTRACKER</h2>
                 <span>Sign in with your email and password</span>
