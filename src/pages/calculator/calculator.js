@@ -16,74 +16,51 @@ class Calculator extends React.Component {
         super(props);
         this.state = {
             result: 0,
-    electricity : 0.0,
-    naturalgas :0.0,
-    fueloil :0,
-    lpg :0,
-    waste:0,
-    water:0,
-    redmeat:0,
-    whitemeat:0,
-    dairy:0,
-    cereals:0,
-    vegetables:0,
-    fruits :0,
-    oils :0,
-    drinks : 0,
-    snacks :0,
-    vehicle : 0,
-    bus:0,
-    metro:0,
-    taxi:0,
-    rail:0,
-    flying:0,
-    elect:0,
-    household :0,
-    clothes :0,
-    medical :0,
-    recreational :0,
-    other :0
+            housing: 0,
+            travel: 0,
+            product: 0,
+            food: 0,
+            electricity : 0.0,
+            naturalgas :0.0,
+            fueloil :0,
+            lpg :0,
+            waste:0,
+            water:0,
+            redmeat:0,
+            whitemeat:0,
+            dairy:0,
+            cereals:0,
+            vegetables:0,
+            fruits :0,
+            oils :0,
+            drinks : 0,
+            snacks :0,
+            vehicle : 0,
+            bus:0,
+            metro:0,
+            taxi:0,
+            rail:0,
+            flying:0,
+            elect:0,
+            household :0,
+            clothes :0,
+            medical :0,
+            recreational :0,
+            other :0
         }
     }
-    // state = {
-    //   items: {
-    //     default: "1",
-    //   }
-    // };
-  
-    // togglePills = (type, tab) => e => {
-    //   e.preventDefault();
-    //   if (this.state.items[type] !== tab) {
-    //     let items = { ...this.state.items };
-    //     items[type] = tab;
-    //     this.setState({
-    //       items
-    //     });
-    //   }
-    // };
+    
   handleSubmit=(e)=>{
     e.preventDefault();
-    const {result,housing,food,vehicle,product} =this.state;
+    const {result,housing,food,travel,product} =this.state;
     auth.onAuthStateChanged(async userAuth => {
         if (userAuth) {
-            console.log(userAuth);
-            console.log(result);
-            console.log(housing);
-            console.log(food);
-            console.log(vehicle);
-            console.log(product);
-            const userRef = await updateData(userAuth, result , housing, food,vehicle,product);
+            const userRef = await updateData(userAuth, result , housing, food,travel,product);
             console.log(userRef);
         }
       
       })
-        
-
   }
-
-    
-
-
 
     render() {
       const food_result = parseFloat(this.state.redmeat) * 30 * 36 +
@@ -119,7 +96,7 @@ class Calculator extends React.Component {
     this.state.result = carbon_footprint;
     this.state.housing = housing_result.toFixed(2);
     this.state.food = food_result.toFixed(2);
-    this.state.vehicle = vehicle_result.toFixed(2);
+    this.state.travel = vehicle_result.toFixed(2);
     this.state.product = product_result.toFixed(2);
 
     
@@ -263,7 +240,7 @@ Why trees? Because trees have been quietly offsetting these carbon emissions for
                 </div>
               </div>
               <h4>Logging information</h4>
-              <div className = {s.containerBoxSide}><Individual housing={this.state.housing} food={this.state.food} travel={this.state.vehicle} product={this.state.product}/></div>
+              <div className = {s.containerBoxSide}><Individual housing={this.state.housing} food={this.state.food} travel={this.state.travel} product={this.state.product}/></div>
             </Row>
           </div>
         </Col>   

@@ -117,7 +117,7 @@ class Login extends React.Component {
                 <span>Please Register if you do not have an account.</span>
                 
                 <div className='buttons'>
-                    <CustomButton type='submit'> Login </CustomButton>
+                    <CustomButton onClick={this.doLogin} type='submit'> Login </CustomButton>
                     <CustomButton onClick={this.signUp}>
                     Register
                     </CustomButton>

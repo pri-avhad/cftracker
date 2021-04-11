@@ -1,9 +1,12 @@
 import React from "react";
 import { Row, Col} from "reactstrap";
 import BreadcrumbHistory from '../../components/BreadcrumbHistory/BreadcrumbHistory';
-
 import Donut from '../../pages/components/charts/Donut';
 import s from '../dashboard/Dashboard.module.scss'
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import {auth} from './../../firebase/firebase.utils';
 
 import "./suggestions.scss";
 class Suggestions extends React.Component {
@@ -12,11 +15,88 @@ class Suggestions extends React.Component {
     super(props);
     this.state = {
       graph: null,
+      result:0,
       checkedArr: [false, false, false],
     };
   }
 
-  
+  componentDidMount(){
+    auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await (userAuth);
+        console.log(userRef.uid);
+        const currentId = userRef.uid;
+        const ref = firebase.firestore().doc(`users/${currentId}`);
+        const data = await ref.get();
+        const date = new Date();
+        const m = date.toLocaleString('default', {month:'long'});
+        switch(m){
+          case 'January':
+            this.setState({
+              result: data.data().c1
+            });
+            break;
+          case 'February':
+            this.setState({
+              result: data.data().c2
+            });
+            break;
+          case 'March':
+            this.setState({
+              result: data.data().c3
+            });
+            break;
+          case 'April':
+            this.setState({
+              result: data.data().c4
+            });
+            break;
+          case 'May':
+            this.setState({
+              result: data.data().c5
+            });
+            break;
+          case 'June':
+            this.setState({
+              result: data.data().c6
+            });
+            break;
+          case 'July':
+            this.setState({
+              result: data.data().c7
+            });
+            break;
+          case 'August':
+            this.setState({
+              result: data.data().c8
+            });
+            break;
+          case 'September':
+            this.setState({
+              result: data.data().c9
+            });
+            break;
+          case 'October':
+            this.setState({
+              result: data.data().c10
+            });
+            break;
+          case 'November':
+            this.setState({
+              result: data.data().c11
+            });
+          break;
+          case 'December':
+            this.setState({
+              result: data.data().c12
+            });
+            break;
+          default:
+              console.log('error');
+      }
+        }
+      });
+    }
 
   render() {
     return (
@@ -65,7 +145,7 @@ class Suggestions extends React.Component {
                   <h4>Your Carbon-footprint</h4>
                   <div className = {s.innerContainer}>
                   <div className = "r">
-                    <h3>2 kgs/month</h3>
+                    <h3>{this.state.result} kgs/month</h3>
                     </div>
                   </div>
                   <h4>Individual footprint</h4>
