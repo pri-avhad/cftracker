@@ -109,7 +109,7 @@ class Calculator extends React.Component {
           <Row style ={{paddingBottom: "10px",paddingTop: "25px"}}> 
               <Col sm={6} className ={s.pad}>
               <h4 className = {s.noMargin}><b><b>Calculating Carbon footprint... </b></b></h4>
-              <p>
+              <p style = {{fontSize: "0.999rem"}}>
               Carbon emissions come mainly from our food, transportation, and homes. So, how do you compare? Our carbon footprint calculator helps you estimate your carbon emissions and the number of trees you need to offset your carbon footprint.
 Why trees? Because trees have been quietly offsetting these carbon emissions for centuries. We all produce carbon dioxide (CO2), directly or indirectly, when we use products produced using fossil fuels. We also indirectly produce carbon dioxide when we eat food that has been produced with artificial fertilizers and pesticides (which are made from oil). In total, the amount of carbon dioxide you produce is your “carbon footprint.” While it seems like a lot of work to figure out your carbon footprint, it is actually easier than you think. In only a few minutes using our carbon footprint calculator, you can estimate your carbon emissions and how many trees it take to offset them.
               </p>
@@ -209,21 +209,21 @@ Why trees? Because trees have been quietly offsetting these carbon emissions for
               </div>
               </Col>
             </Row>
-            <h4 className = {s.noMargin}>Benefits of calculating </h4>
+            <h4 className = "title2">Benefits of calculating </h4>
             <Row>
               <Col sm lg = {4} className ={s.pad}>
-              <div className = {s.don}>
-                <img className = {s.img} src= {require("./calcImages/13.png")}  />
+              <div className = "benefits">
+                <img className = {s.img} src= {require("./calcImages/13.png")} width="100%" />
               </div>
               </Col>
               <Col sm lg = {4} className ={s.pad}>
-              <div className = {s.don}>
-                <img className = {s.img}  src= {require("./calcImages/14.png")} />
+              <div className = "benefits">
+                <img className = {s.img}  src= {require("./calcImages/14.png")} width="100%" />
               </div>
               </Col>
               <Col sm lg = {4} className ={s.pad}>
-              <div className = {s.don}>
-                <img className = {s.img}  src= {require("./calcImages/15.png")} />
+              <div className = "benefits">
+                <img className = {s.img}  src= {require("./calcImages/15.png")} width="100%"  />
               </div>
               </Col>
             </Row>

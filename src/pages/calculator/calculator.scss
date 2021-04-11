@@ -88,27 +88,26 @@ label{
   float:left
 }
 .buttonn {
-  min-width: 50px;
   width: auto;
-  height: 50px;
+  height: 30px;
   letter-spacing: 0.5px;
-  line-height: 30px;
+  line-height: 20px;
   padding: 0 25px 0 25px;
   font-size: 15px;
-  background-color: black;
-  color: white;
-  text-transform: uppercase;
-  font-family: "Open Sans Condensed";
+  background-color: rgb(255, 255, 255);
+  color: #00B28C;
   font-weight: bolder;
   border: none;
   cursor: pointer;
   display: inline-block;
-  margin: auto 0;
+  margin-top: 10%;
+  margin-bottom: 2%;
 
   &:hover {
     background-color: white;
     color: black;
-    border: 1px solid black;
+    box-shadow: 1px 1px 1px 1px #dfdfdfb4; 
+    border: 1px solid rgb(255, 255, 255);
   }
 }
 .form{
@@ -132,4 +131,22 @@ label{
 .title{
   font-weight: bold;
   margin-bottom: 2%;
+}
+.title2{
+  margin-bottom: 2%;
+  margin-top: 0%;
+}
+
+
+.benefits {
+  position: relative;
+  border-radius: 20px;
+  height: 100%;
+  width: 100%;
+  background: #e3f6f0;
+  box-shadow: 2px 2px 5px 5px #E5E5E5; //Shadhow
+  padding-top: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+  padding-left: 2%;
 }

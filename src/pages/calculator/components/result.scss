@@ -1,14 +1,32 @@
 .innerContainer {
   position: relative;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 35px;
+  padding-top: 3%;
+  padding-right: 3%;
+  padding-left: 3%;
+  margin-top: 1%;
   text-align: center;
   align-self: center;
-  height: 100px;
+  height: 100%;
   border-radius: 20px;
-  width: 95%;
+  width: 100%;
   background-color: #00b28c;
   display: inline;
   float: right;
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+  overflow-y: scroll;
 }
+.innerContainer::-webkit-scrollbar {
+  display: none;
+}
+.text{
+  color: white;
+  font-size: 1.1rem;
+  margin: 0
+}
+@media screen and (max-width: 768px) {
+  .text{
+      color: white;
+      font-size: 1.2rem;
+      margin: 0
+  }}

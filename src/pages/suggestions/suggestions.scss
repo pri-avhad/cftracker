@@ -12,21 +12,37 @@
 -webkit-box-shadow: 8px 8px 3px rgba(34, 34, 34, 0.61);
 box-shadow: 8px 8px 3px rgba(34, 34, 34, 0.61);
 }
+
+.r::-webkit-scrollbar {
+    display: none;
+  }
 .r {
     position: relative;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 30px;
+    padding: 3%;
+    margin-top: 1%;
+    margin-bottom: 1%;
     text-align: center;
     align-self: center;
-    height: 130px;
+    height: 160px;
     border-radius: 20px;
-    width: 95%;
+    width: 100%;
     background-color: #00b28c;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    overflow-y: scroll;
     display: inline;
     float: right;
   }
+  .text{
+    color: white;
+    font-size: 1.1rem;
+}
   @media screen and (max-width: 768px) {
+    .text{
+        color: white;
+        font-size: 1.2rem;
+    }
+
     .img{
         width: 70%;
         margin-right: 15%;

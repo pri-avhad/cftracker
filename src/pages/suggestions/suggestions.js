@@ -144,9 +144,10 @@ class Suggestions extends React.Component {
               <Row>
                   <h4>Your Carbon-footprint</h4>
                   <div className = {s.innerContainer}>
-                  <div className = "r">
-                    <h3>{this.state.result} kgs/month</h3>
-                    </div>
+                  <div></div>
+                  <div className = "r" >
+                    <p className = "text" >Your currrent Carbon footprint is <b><b>{this.state.result} kgs/month</b></b> whilst the average for an average Indian is 47 kgs/month. Follow the given suggestions to lower your footprint</p>
+                  </div>
                   </div>
                   <h4>Individual footprint</h4>
                   <div className = {s.containerBoxSide}><Donut/></div>
