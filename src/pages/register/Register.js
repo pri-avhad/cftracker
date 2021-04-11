@@ -147,7 +147,7 @@ class Register extends React.Component {
                     label='Confirm Password'
                     required
                 />
-                <span>Already have an account? Please Login.</span>
+                <span>Already have an account?<a style={{color:"red"}} href="login"> Please Login </a></span>
                 
                 <div className='buttons'>
                     <CustomButton type='submit'> Register </CustomButton>
