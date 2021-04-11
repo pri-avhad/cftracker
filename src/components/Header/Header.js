@@ -143,17 +143,11 @@ class Header extends React.Component {
       <Navbar className={`d-print-none `}>
       <h3 style = {{paddingLeft: "10px", color: "white"}}>Carbon footprint</h3>
         <div className={s.burger}>
-          <NavLink
-                onClick={()=> {
-                  auth.signOut();
-                  localStorage.removeItem('autheticated');
-                  this.doLogout();
-                  
-              
-                }}
-                className={`${s.navItem} text-white`}
-                href="login"
-              >
+        <NavLink
+              onClick={this.toggleSidebar}
+              className={`d-md-none ${s.navItem} text-white`}
+              href="#"
+            >
               <BurgerIcon className={s.headerIcon} />
             </NavLink>
         </div>

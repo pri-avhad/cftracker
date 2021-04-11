@@ -11,7 +11,7 @@ import config from "./config";
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import {auth} from './../../../firebase/firebase.utils';
+import {auth} from '../../../firebase/firebase.utils';
 const colors = config.chartColors;
 class Donut extends React.Component{
   constructor(props){

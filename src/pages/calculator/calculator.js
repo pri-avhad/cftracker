@@ -4,10 +4,10 @@ import s from '../dashboard/Dashboard.module.scss'
 import BreadcrumbHistory from '../../components/BreadcrumbHistory/BreadcrumbHistory';
 import './calculator.scss'
 import Result from './components/result';
-import Individual from './components/individual';
 import { connect } from 'react-redux';
 import {setCurrentUser} from '../../reducers/user/user.actions';
 import {auth, updateData} from  '../../firebase/firebase.utils';
+import Donut from '../../pages/components/charts/calcDonut';
 
 
 
@@ -108,9 +108,6 @@ class Calculator extends React.Component {
           <BreadcrumbHistory url={this.props.location.pathname} />   
           <Row style ={{paddingBottom: "10px",paddingTop: "25px"}}> 
               <Col sm={6} className ={s.pad}>
-              {/* <div className = {s.containerBox}> */}
-                {/* <img className = {s.img} src= {require("./calcImages/intro.png")}  /> */}
-              {/* </div> */}
               <h4 className = {s.noMargin}><b><b>Calculating Carbon footprint... </b></b></h4>
               <p>
               Carbon emissions come mainly from our food, transportation, and homes. So, how do you compare? Our carbon footprint calculator helps you estimate your carbon emissions and the number of trees you need to offset your carbon footprint.
@@ -140,7 +137,28 @@ Why trees? Because trees have been quietly offsetting these carbon emissions for
               <label>Water <small>in litres/day</small></label><input className="input-field" type="text" name="water"  onChange={e=> this.setState({water:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>            
               </div>
 
-              <h4 className ="title">Food</h4>
+              
+            <h4 className ="title" style={{marginTop: "5%"}}>Travel</h4>
+            <div className = "max">
+            <label>Vehicle <small>in km/month</small></label><input className="input-field" type="text" name="vehicle"  onChange={e=> this.setState({vehicle:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
+            </div>
+            <div className = "max">
+            <label>Bus <small>in km/month</small></label><input className="input-field" type="text" name="bus"  onChange={e=> this.setState({bus:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
+            </div>
+            <div className = "max">
+            <label>Metro <small>in km/month</small></label><input className="input-field" type="text" name="metro"  onChange={e=> this.setState({metro:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
+            </div>
+            <div className = "max">
+            <label>Taxi <small>in km/month</small></label><input className="input-field" type="text" name="taxi"  onChange={e=> this.setState({taxi:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
+            </div>
+            <div className = "max">
+            <label>Rail <small>in km/month</small></label><input className="input-field" type="text" name="rail"  onChange={e=> this.setState({rail:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
+            </div>
+            <div className = "max">
+            <label>Flying <small>in km/month</small></label><input className="input-field" type="text" name="flying"  onChange={e=> this.setState({flying:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>          
+            </div>
+
+            <h4 className ="title" style={{marginTop: "5%"}}>Food</h4>
               <div className = "max">
             <label>White Meat <small>in kCal/day</small></label><input className="input-field" type="text" name="whitemeat"  onChange={e=> this.setState({whitemeat:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
             </div>
@@ -166,27 +184,8 @@ Why trees? Because trees have been quietly offsetting these carbon emissions for
             <label>Snacks <small>in kCal/day</small></label><input className="input-field" type="text" name="snacks"  onChange={e=> this.setState({snacks:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>         
             </div>
 
-            <h4 className ="title">Travel</h4>
-            <div className = "max">
-            <label>Vehicle <small>in km/month</small></label><input className="input-field" type="text" name="vehicle"  onChange={e=> this.setState({vehicle:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
-            </div>
-            <div className = "max">
-            <label>Bus <small>in km/month</small></label><input className="input-field" type="text" name="bus"  onChange={e=> this.setState({bus:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
-            </div>
-            <div className = "max">
-            <label>Metro <small>in km/month</small></label><input className="input-field" type="text" name="metro"  onChange={e=> this.setState({metro:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
-            </div>
-            <div className = "max">
-            <label>Taxi <small>in km/month</small></label><input className="input-field" type="text" name="taxi"  onChange={e=> this.setState({taxi:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
-            </div>
-            <div className = "max">
-            <label>Rail <small>in km/month</small></label><input className="input-field" type="text" name="rail"  onChange={e=> this.setState({rail:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>
-            </div>
-            <div className = "max">
-            <label>Flying <small>in km/month</small></label><input className="input-field" type="text" name="flying"  onChange={e=> this.setState({flying:e.target.value, result : carbon_footprint},()=>console.log(this.state))}></input>          
-            </div>
 
-            <h4 className ="title">Products</h4>
+            <h4 className ="title" style={{marginTop: "5%"}}>Products</h4>
             <div className = "max">
             <label>Electrical <small>in Rs/month</small></label><input className="input-field" type="text" name="elect"  onChange={e=> this.setState({elect:e.target.value},()=>console.log(this.state))}></input>
             </div>
@@ -240,7 +239,7 @@ Why trees? Because trees have been quietly offsetting these carbon emissions for
                 </div>
               </div>
               <h4>Logging information</h4>
-              <div className = {s.containerBoxSide}><Individual housing={this.state.housing} food={this.state.food} travel={this.state.travel} product={this.state.product}/></div>
+              <div className = {s.containerBoxSide}><Donut h={this.state.housing} f={this.state.food} t={this.state.travel} p={this.state.product}/></div>
             </Row>
           </div>
         </Col>   

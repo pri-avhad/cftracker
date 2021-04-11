@@ -53,7 +53,7 @@ class Co2 extends React.Component{
         console.log(data.data().housing);
         this.setState({
           c1: data.data().c1,
-          c2:  data.data().c2,
+          c2: data.data().c2,
           c3: data.data().c3,
           c4: data.data().c4,
           c5: data.data().c5,
