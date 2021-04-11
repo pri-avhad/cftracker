@@ -90,24 +90,6 @@ class Sidebar extends React.Component {
                         link="/carbonfootprint/homepage"
                         index="homepage"
                     />
-                    {/* <LinksGroup
-                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
-                        activeItem={this.props.activeItem}
-                        header="Typography"
-                        isHeader
-                        iconName={<TypographyIcon className={s.menuIcon} />}
-                        link="/app/typography"
-                        index="core"
-                    /> */}
-                    {/* <LinksGroup
-                        onActiveSidebarItemChange={t => this.props.dispatch(changeActiveSidebarItem(t))}
-                        activeItem={this.props.activeItem}
-                        header="Calculator"
-                        isHeader
-                        iconName={<TablesIcon className={s.menuIcon} />}
-                        link="/carbonfootprint/calculator"
-                        index="calculator"
-                    /> */}
                     <LinksGroup
                         onActiveSidebarItemChange={t => this.props.dispatch(changeActiveSidebarItem(t))}
                         activeItem={this.props.activeItem}
@@ -126,35 +108,6 @@ class Sidebar extends React.Component {
                         link="/carbonfootprint/suggestions"
                         index="suggestions"
                     />
-                    {/* <LinksGroup
-                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
-                        activeItem={this.props.activeItem}
-                        header="Notifications"
-                        isHeader
-                        iconName={<NotificationsIcon className={s.menuIcon}/>}
-                        link="/app/notifications"
-                        index="ui"
-                    />
-                    <LinksGroup
-                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
-                        activeItem={this.props.activeItem}
-                        header="Components"
-                        isHeader
-                        iconName={<ComponentsIcon className={s.menuIcon}/>}
-                        link="/app/components"
-                        index="components"
-                        childrenLinks={[
-                            {
-                                header: 'Charts', link: '/app/components/charts',
-                            },
-                            {
-                                header: 'Icons', link: '/app/components/icons',
-                            },
-                            {
-                                header: 'Maps', link: '/app/components/maps',
-                            },
-                        ]}
-                    /> */}
                     <Button  className={s.logbtn} onClick={()=> {
                         auth.signOut();
                         localStorage.removeItem('autheticated');
